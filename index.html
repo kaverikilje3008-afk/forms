@@ -2,14 +2,20 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Kaveri | Web Development</title>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Intermediate HTML CSS JavaScript</title>
 
 <style>
 
-/* RESET */
+/* ==================================================
+   1. BASIC RESET
+================================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -21,16 +27,22 @@ html {
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #f5f7fb;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f8f7;
     color: #222;
+    line-height: 1.6;
 }
 
-/* NAVBAR */
+
+/* ==================================================
+   NAVIGATION - FLEXBOX
+================================================== */
+
 nav {
-    background: #111827;
+    background: #064e4e;
     color: white;
-    padding: 18px 8%;
+
+    padding: 16px 7%;
 
     display: flex;
     justify-content: space-between;
@@ -38,16 +50,16 @@ nav {
 
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .logo {
-    font-size: 25px;
+    font-size: 24px;
     font-weight: bold;
 }
 
 .logo span {
-    color: #6c63ff;
+    color: #7de2c4;
 }
 
 nav ul {
@@ -56,18 +68,23 @@ nav ul {
     list-style: none;
 }
 
-nav a {
+nav ul li a {
     color: white;
     text-decoration: none;
+    font-weight: bold;
 }
 
-nav a:hover {
-    color: #6c63ff;
+nav ul li a:hover {
+    color: #7de2c4;
 }
 
-/* HERO */
+
+/* ==================================================
+   HERO
+================================================== */
+
 .hero {
-    min-height: 80vh;
+    min-height: 70vh;
 
     display: flex;
     justify-content: center;
@@ -77,22 +94,27 @@ nav a:hover {
 
     padding: 40px 20px;
 
-    background: linear-gradient(
-        135deg,
-        #6c63ff,
-        #00bcd4
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #064e4e,
+            #0b8f87
+        );
 
     color: white;
 }
 
+.hero-content {
+    max-width: 850px;
+}
+
 .hero h1 {
-    font-size: 50px;
-    margin-bottom: 20px;
+    font-size: 48px;
+    margin-bottom: 15px;
 }
 
 .hero h1 span {
-    color: #ffe66d;
+    color: #7de2c4;
 }
 
 .hero p {
@@ -100,406 +122,74 @@ nav a:hover {
     margin: 10px 0;
 }
 
-.btn {
+.hero-button {
     display: inline-block;
 
     margin-top: 25px;
 
-    padding: 13px 25px;
+    padding: 12px 25px;
 
     background: white;
-    color: #5b54d6;
+    color: #064e4e;
 
     text-decoration: none;
 
-    border-radius: 30px;
+    border-radius: 25px;
 
     font-weight: bold;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-}
-
-/* SECTIONS */
-section {
-    padding: 70px 8%;
-}
-
-.title {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.title h2 {
-    color: #6c63ff;
-    font-size: 32px;
-}
-
-/* SKILLS GRID */
-.skills {
-    display: grid;
-
-    grid-template-columns:
-    repeat(auto-fit, minmax(200px, 1fr));
-
-    gap: 25px;
-}
-
-.card {
-    background: white;
-
-    padding: 30px;
-
-    border-radius: 15px;
-
-    text-align: center;
-
-    box-shadow:
-    0 5px 20px rgba(0,0,0,0.08);
 
     transition: 0.3s;
 }
 
-.card:hover {
-    transform: translateY(-8px);
+.hero-button:hover {
+    transform: translateY(-4px);
 }
 
-.card .icon {
-    font-size: 45px;
+
+/* ==================================================
+   COMMON SECTION
+================================================== */
+
+section {
+    padding: 70px 8%;
 }
 
-.card h3 {
-    margin: 15px 0;
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
 }
 
-.progress {
-    width: 100%;
-    height: 10px;
+.section-title h2 {
+    color: #087f78;
+    font-size: 32px;
+}
 
-    background: #ddd;
+.section-title p {
+    margin-top: 8px;
+    color: #555;
+}
+
+
+/* ==================================================
+   OBJECTIVE
+================================================== */
+
+.objective {
+    background: white;
+    border-left: 5px solid #087f78;
+
+    padding: 25px;
+
+    max-width: 900px;
+
+    margin: auto;
 
     border-radius: 10px;
 
-    overflow: hidden;
-}
-
-.bar {
-    height: 100%;
-
-    background: linear-gradient(
-        90deg,
-        #6c63ff,
-        #00bcd4
-    );
-}
-
-/* FLEXBOX */
-.container {
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 30px;
-
-    align-items: flex-start;
-}
-
-.box {
-    flex: 1;
-
-    min-width: 300px;
-
-    background: white;
-
-    padding: 30px;
-
-    border-radius: 15px;
-
     box-shadow:
-    0 5px 20px rgba(0,0,0,0.08);
+        0 5px 20px rgba(0,0,0,0.08);
 }
 
-.box h3 {
-    color: #6c63ff;
-
-    margin-bottom: 20px;
-}
-
-/* FORM */
-.form-group {
-    margin-bottom: 18px;
-}
-
-label {
-    display: block;
-
-    font-weight: bold;
-
-    margin-bottom: 7px;
-}
-
-input,
-textarea,
-select {
-
-    width: 100%;
-
-    padding: 12px;
-
-    border: 2px solid #ddd;
-
-    border-radius: 8px;
-
-    outline: none;
-
-    font-size: 15px;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-    border-color: #6c63ff;
-}
-
-textarea {
-    min-height: 120px;
-
-    resize: vertical;
-}
-
-.error {
-    color: red;
-
-    font-size: 13px;
-
-    margin-top: 5px;
-}
-
-button {
-    cursor: pointer;
-}
-
-/* SUBMIT */
-.submit {
-    width: 100%;
-
-    border: none;
-
-    padding: 13px;
-
-    border-radius: 8px;
-
-    background: linear-gradient(
-        90deg,
-        #6c63ff,
-        #00bcd4
-    );
-
-    color: white;
-
-    font-size: 16px;
-
-    font-weight: bold;
-}
-
-/* SUCCESS */
-.success {
-    display: none;
-
-    background: #d1fae5;
-
-    color: #065f46;
-
-    padding: 12px;
-
-    margin-top: 15px;
-
-    border-radius: 8px;
-}
-
-/* TODO */
-.todo-input {
-    display: flex;
-
-    gap: 10px;
-}
-
-.todo-input input {
-    flex: 1;
-}
-
-.add {
-    border: none;
-
-    background: #6c63ff;
-
-    color: white;
-
-    padding: 0 20px;
-
-    border-radius: 8px;
-}
-
-#taskList {
-    list-style: none;
-
-    margin-top: 20px;
-}
-
-.task {
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    background: #f1f3f8;
-
-    padding: 12px;
-
-    margin-bottom: 10px;
-
-    border-radius: 8px;
-}
-
-.task-text {
-    flex: 1;
-}
-
-.completed {
-    text-decoration: line-through;
-
-    opacity: 0.5;
-}
-
-.delete {
-    border: none;
-
-    background: #e63946;
-
-    color: white;
-
-    padding: 7px 10px;
-
-    border-radius: 5px;
-}
-
-.filters {
-    margin-top: 20px;
-
-    display: flex;
-
-    gap: 8px;
-
-    flex-wrap: wrap;
-}
-
-.filter {
-    border: none;
-
-    padding: 8px 15px;
-
-    border-radius: 20px;
-
-    background: #ddd;
-}
-
-.filter.active {
-    background: #6c63ff;
-
-    color: white;
-}
-
-/* FOOTER */
-footer {
-    background: #111827;
-
-    color: white;
-
-    text-align: center;
-
-    padding: 25px;
-}
-
-footer span {
-    color: #6c63ff;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-
-    nav {
-        flex-direction: column;
-
-        gap: 15px;
-    }
-
-    nav ul {
-        flex-wrap: wrap;
-
-        justify-content: center;
-    }
-
-    .hero h1 {
-        font-size: 35px;
-    }
-
-    .container {
-        flex-direction: column;
-    }
-
-    .box {
-        width: 100%;
-    }
-
-    .todo-input {
-        flex-direction: column;
-    }
-
-    .add {
-        padding: 12px;
-    }
-}
-
-</style>
-</head>
-
-
-<body>
-
-
-<!-- NAVBAR -->
-
-<nav>
-
-<div class="logo">
-Kaveri<span>.</span>
-</div>
-
-<ul>
-<li><a href="#home">Home</a></li>
-<li><a href="#skills">Skills</a></li>
-<li><a href="#contact">Contact</a></li>
-<li><a href="#todo">To-Do</a></li>
-</ul>
-
-</nav>
-
-
-<!-- HERO -->
-
-<section id="home" class="hero">
-
-<div>
-
-<h1>
-Welcome to <span>My Website</span>
-</h1>
-
-<p>
-Advanced HTML, CSS and JavaScript Project
-</p>
-
-<p>
-Responsive Design • Form Validation • DOM
+.objective h3 {
+    color: #087f78;
+    margin-bottom: 10
