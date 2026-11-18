@@ -1,195 +1,143 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A responsive contact form and task list built with HTML, CSS, and JavaScript.">
+  <title>HelloBloom — Contact & Tasks</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="HelloBloom home">
+      <span class="brand-mark">H</span> HelloBloom
+    </a>
 
-<meta charset="UTF-8">
+    <nav aria-label="Main navigation">
+      <a href="#contact">Contact</a>
+      <a href="#tasks">My tasks</a>
+    </nav>
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+    <a class="header-cta" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a>
+  </header>
 
-<title>Intermediate HTML CSS JavaScript</title>
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> A little more connected</p>
+        <h1 id="hero-title">Good things<br>start with <em>hello.</em></h1>
+        <p class="hero-description">
+          Have a question, an idea, or just want to say hi?
+          Send a note and we’ll be in touch.
+        </p>
+        <a class="text-link" href="#contact">Write us a message <span aria-hidden="true">↓</span></a>
+      </div>
 
-<style>
+      <div class="hero-art" aria-hidden="true">
+        <div class="sun"></div>
+        <div class="art-card">
+          <span class="art-spark">✳</span>
+          <span class="art-script">hello<br>there</span>
+          <span class="art-caption">MAKE ROOM FOR GOOD THINGS</span>
+        </div>
+        <div class="art-orbit orbit-one"></div>
+        <div class="art-orbit orbit-two"></div>
+      </div>
+    </section>
 
-/* ==================================================
-   1. BASIC RESET
-================================================== */
+    <section class="content-grid" aria-label="Contact form and personal task list">
+      <article class="panel contact-panel" id="contact">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">01 / GET IN TOUCH</p>
+            <h2>Drop us a line</h2>
+          </div>
+          <span class="heading-icon" aria-hidden="true">↗</span>
+        </div>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        <p class="panel-intro">Fill in the details below and your message will be ready to send.</p>
 
-html {
-    scroll-behavior: smooth;
-}
+        <form id="contact-form" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Your name <span>*</span></label>
+              <input id="name" name="name" type="text" autocomplete="name"
+                     placeholder="Jamie Smith" required minlength="2">
+              <small class="error" id="name-error"></small>
+            </div>
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f4f8f7;
-    color: #222;
-    line-height: 1.6;
-}
+            <div class="field">
+              <label for="email">Email address <span>*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email"
+                     placeholder="jamie@example.com" required>
+              <small class="error" id="email-error"></small>
+            </div>
+          </div>
 
+          <div class="field">
+            <label for="subject">What’s this about?</label>
+            <select id="subject" name="subject">
+              <option value="" selected>Choose a topic</option>
+              <option>Say hello</option>
+              <option>Ask a question</option>
+              <option>Work together</option>
+              <option>Something else</option>
+            </select>
+          </div>
 
-/* ==================================================
-   NAVIGATION - FLEXBOX
-================================================== */
+          <div class="field">
+            <label for="message">Your message <span>*</span></label>
+            <textarea id="message" name="message" rows="4"
+                      placeholder="Tell us a little about it..." required minlength="10"></textarea>
+            <small class="error" id="message-error"></small>
+          </div>
 
-nav {
-    background: #064e4e;
-    color: white;
+          <div class="form-footer">
+            <p><span aria-hidden="true">✳</span> We usually reply within two business days.</p>
+            <button class="button button-dark" type="submit">
+              Send message <span aria-hidden="true">↗</span>
+            </button>
+          </div>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </article>
 
-    padding: 16px 7%;
+      <aside class="panel tasks-panel" id="tasks">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">02 / A FRESH START</p>
+            <h2>Your little list</h2>
+          </div>
+          <span class="heading-icon task-icon" aria-hidden="true">✳</span>
+        </div>
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+        <p class="panel-intro">Small steps count. Add a task and make today yours.</p>
 
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+        <form class="task-form" id="task-form">
+          <label class="visually-hidden" for="task-input">New task</label>
+          <input id="task-input" type="text" maxlength="100"
+                 placeholder="What’s on your mind?" required>
+          <button class="button button-green" type="submit" aria-label="Add task">
+            Add <span aria-hidden="true">+</span>
+          </button>
+        </form>
 
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-}
+        <p class="task-count" id="task-count" aria-live="polite">0 tasks</p>
+        <ul class="task-list" id="task-list" aria-label="Your tasks"></ul>
+        <div class="empty-state" id="empty-state">
+          <span aria-hidden="true">✳</span>
+          <p>Your list is clear.<br>Add one small thing to begin.</p>
+        </div>
+        <div class="tasks-note"><span aria-hidden="true">✦</span> Your tasks stay saved on this device.</div>
+      </aside>
+    </section>
+  </main>
 
-.logo span {
-    color: #7de2c4;
-}
-
-nav ul {
-    display: flex;
-    gap: 25px;
-    list-style: none;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav ul li a:hover {
-    color: #7de2c4;
-}
-
-
-/* ==================================================
-   HERO
-================================================== */
-
-.hero {
-    min-height: 70vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-
-    padding: 40px 20px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #064e4e,
-            #0b8f87
-        );
-
-    color: white;
-}
-
-.hero-content {
-    max-width: 850px;
-}
-
-.hero h1 {
-    font-size: 48px;
-    margin-bottom: 15px;
-}
-
-.hero h1 span {
-    color: #7de2c4;
-}
-
-.hero p {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-.hero-button {
-    display: inline-block;
-
-    margin-top: 25px;
-
-    padding: 12px 25px;
-
-    background: white;
-    color: #064e4e;
-
-    text-decoration: none;
-
-    border-radius: 25px;
-
-    font-weight: bold;
-
-    transition: 0.3s;
-}
-
-.hero-button:hover {
-    transform: translateY(-4px);
-}
-
-
-/* ==================================================
-   COMMON SECTION
-================================================== */
-
-section {
-    padding: 70px 8%;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.section-title h2 {
-    color: #087f78;
-    font-size: 32px;
-}
-
-.section-title p {
-    margin-top: 8px;
-    color: #555;
-}
-
-
-/* ==================================================
-   OBJECTIVE
-================================================== */
-
-.objective {
-    background: white;
-    border-left: 5px solid #087f78;
-
-    padding: 25px;
-
-    max-width: 900px;
-
-    margin: auto;
-
-    border-radius: 10px;
-
-    box-shadow:
-        0 5px 20px rgba(0,0,0,0.08);
-}
-
-.objective h3 {
-    color: #087f78;
-    margin-bottom: 10
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#top"><span class="brand-mark">H</span> HelloBloom</a>
+    <p>Made for the little things that matter.</p>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+</body>
+</html>
